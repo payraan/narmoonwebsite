@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request, HTTPException
+wfrom fastapi import FastAPI, Request, HTTPException
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, Response, RedirectResponse, PlainTextResponse
@@ -386,5 +386,7 @@ if __name__ == "__main__":
         port=int(os.environ.get("PORT", 8000)),
         reload=is_development,
         log_level="info" if not is_development else "debug",
-        access_log=True
+        access_log=True,
+        forwarded_allow_ips="*",
+        proxy_headers=True
     )
