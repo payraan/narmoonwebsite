@@ -10,6 +10,14 @@ import os
 from datetime import datetime
 from typing import List, Dict, Any
 
+# HTTPS Scheme Middleware - باید قبل از همه چیز باشه
+class HTTPSSchemeMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        if request.headers.get("x-forwarded-proto") == "https":
+            request.scope['scheme'] = 'https'
+        response = await call_next(request)
+        return response
+
 # Security Headers Middleware
 class SecurityHeadersMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
@@ -60,6 +68,7 @@ app = FastAPI(
 )
 
 # Middleware - ترتیب مهم است
+app.add_middleware(HTTPSSchemeMiddleware)
 app.add_middleware(SecurityHeadersMiddleware)
 app.add_middleware(GZipMiddleware, minimum_size=1000)
 app.add_middleware(
