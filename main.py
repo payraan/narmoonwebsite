@@ -45,6 +45,7 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         
         # HTTPS Strict Transport Security (only in production)
         if request.headers.get("x-forwarded-proto") == "https":
+            request.scope['scheme'] = 'https'
             response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains; preload"
         
         return response
