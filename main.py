@@ -72,7 +72,7 @@ app.add_middleware(
 # Static files with cache headers
 app.mount("/static", StaticFiles(directory="static", html=True), name="static")
 
-# Force HTTPS in production
+# Force HTTPS and fix static URLs
 @app.middleware("http")
 async def force_https(request: Request, call_next):
     # Force HTTPS redirect only in production
@@ -83,9 +83,15 @@ async def force_https(request: Request, call_next):
     
     response = await call_next(request)
     
+    # Fix static file URLs to use HTTPS in production
+    if "railway.app" in request.headers.get("host", "") and response.headers.get("content-type", "").startswith("text/html"):
+        content = response.body.decode()
+        content = content.replace('http://narmoonwebsite-production.up.railway.app/', 'https://narmoonwebsite-production.up.railway.app/')
+        response = Response(content=content, media_type="text/html")
+    
     # Cache static files
     if request.url.path.startswith("/static/"):
-        response.headers["Cache-Control"] = "public, max-age=31536000"  # 1 year
+        response.headers["Cache-Control"] = "public, max-age=31536000"
         response.headers["Expires"] = "Thu, 31 Dec 2025 23:59:59 GMT"
     
     return response
