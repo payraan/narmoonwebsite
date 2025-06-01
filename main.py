@@ -8,6 +8,7 @@ import uvicorn
 import os
 from datetime import datetime
 from typing import List, Dict, Any
+from fastapi.responses import RedirectResponse
 
 # FastAPI app instance
 app = FastAPI(
@@ -28,8 +29,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Static files
+# Static files with HTTPS support
 app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# Force HTTPS in production
+@app.middleware("http")
+async def force_https(request: Request, call_next):
+    if request.headers.get("x-forwarded-proto") == "http":
+        url = request.url.replace(scheme="https")
+        return RedirectResponse(url=str(url), status_code=301)
+    response = await call_next(request)
+    return response
 
 # Templates
 templates = Jinja2Templates(directory="templates")
@@ -147,7 +157,7 @@ async def sitemap():
         })
     
     sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
-    sitemap_xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    sitemap_xml += '<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">\n'
     
     for url in urls:
         sitemap_xml += f'''
