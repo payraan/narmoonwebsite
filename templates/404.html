@@ -1,0 +1,35 @@
+<!-- 404.html -->
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<section class="error-page py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <div class="error-content">
+                    <div class="error-icon mb-4">
+                        <i class="fas fa-search fa-6x text-primary"></i>
+                    </div>
+                    <h1 class="display-1 fw-bold text-primary mb-4">۴۰۴</h1>
+                    <h2 class="mb-4">صفحه یافت نشد!</h2>
+                    <p class="lead text-muted mb-5">
+                        متأسفانه صفحه‌ای که دنبال آن می‌گردید وجود ندارد. ممکن است آدرس اشتباه وارد کرده باشید.
+                    </p>
+                    <div class="error-actions">
+                        <a href="{{ url_for('home') }}" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-home me-2"></i>بازگشت به خانه
+                        </a>
+                        <a href="{{ url_for('articles') }}" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-newspaper me-2"></i>مقالات
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

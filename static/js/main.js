@@ -20,13 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Navbar background on scroll
     const navbar = document.querySelector('.navbar');
-    const headerHeight = navbar.offsetHeight;
+    const headerHeight = navbar ? navbar.offsetHeight : 0;
 
     window.addEventListener('scroll', function() {
         if (window.scrollY > headerHeight) {
-            navbar.classList.add('scrolled');
+            if (navbar) navbar.classList.add('scrolled');
         } else {
-            navbar.classList.remove('scrolled');
+            if (navbar) navbar.classList.remove('scrolled');
         }
     });
 
