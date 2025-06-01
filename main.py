@@ -44,7 +44,7 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
             "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; "
             "img-src 'self' data: https: http: https://*.railway.app; "
             "connect-src 'self' https://www.google-analytics.com https://www.google.com https://*.railway.app; "
-            "frame-src https://www.youtube.com https://youtube.com https://www.googletagmanager.com; "
+            "frame-src https://www.youtube.com https://youtube.com https://www.googletagmanager.com https://td.doubleclick.net; "
             "object-src 'none'; "
             "base-uri 'self'; "
             "form-action 'self';"
