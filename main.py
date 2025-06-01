@@ -388,5 +388,4 @@ if __name__ == "__main__":
         log_level="info" if not is_development else "debug",
         access_log=True,
         forwarded_allow_ips="*",
-        proxy_headers=True
     )
