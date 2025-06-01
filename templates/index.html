@@ -1,0 +1,358 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-6">
+                <div class="hero-content">
+                    <h1 class="display-4 fw-bold text-dark mb-4">
+                        تحلیلگر حرفه‌ای بازارهای مالی با هوش مصنوعی
+                        <span class="text-primary">ترید هوشمند، سود مستمر</span>
+                    </h1>
+                    <p class="lead text-muted mb-5">
+                        نارموون، اولین ربات تلگرامی فارسی است که از تحلیل تصویری نمودار و داده‌های لحظه‌ای رمزارز، فارکس، طلا و بازارهای سهام با کمک هوش مصنوعی پشتیبانی می‌کند. کافیست اسکرین‌شات چارت خود را ارسال کنید تا در چند ثانیه، تحلیل حرفه‌ای و سیگنال معاملاتی دریافت کنید.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="https://t.me/NarmoonAI_BOT" class="btn btn-primary btn-lg me-3 mb-3" target="_blank">
+                            <i class="fab fa-telegram me-2"></i>شروع با ربات تلگرامی
+                        </a>
+                        <a href="#features" class="btn btn-outline-primary btn-lg mb-3">
+                            <i class="fas fa-info-circle me-2"></i>ویژگی‌ها
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-image text-center">
+                    <img src="{{ url_for('static', path='images/hero-dashboard.png') }}" alt="نارموون Dashboard" class="img-fluid rounded-3 shadow-lg">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section py-5 bg-primary">
+    <div class="container">
+        <div class="row text-center text-white">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-item">
+                    <i class="fas fa-users fa-3x mb-3"></i>
+                    <h3 class="fw-bold">{{ stats.active_users }}</h3>
+                    <p>کاربر فعال</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-item">
+                    <i class="fas fa-chart-line fa-3x mb-3"></i>
+                    <h3 class="fw-bold">{{ stats.daily_analysis }}</h3>
+                    <p>تحلیل روزانه</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-item">
+                    <i class="fas fa-trophy fa-3x mb-3"></i>
+                    <h3 class="fw-bold">{{ stats.success_analysis }}</h3>
+                    <p>تحلیل موفق</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-item">
+                    <i class="fas fa-brain fa-3x mb-3"></i>
+                    <h3 class="fw-bold">{{ stats.strategies }}</h3>
+                    <p>استراتژی به‌روز</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="features-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="section-title">ویژگی‌های اصلی نارموون</h2>
+                <p class="section-subtitle text-muted">ابزارهای پیشرفته برای تحلیل بازارهای مالی</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card h-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-camera text-primary"></i>
+                    </div>
+                    <h5>تحلیل تصویری هوشمند</h5>
+                    <p class="text-muted">آپلود تصویر چارت و دریافت تحلیل دقیق در چند ثانیه با استفاده از هوش مصنوعی پیشرفته</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card h-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-signal text-primary"></i>
+                    </div>
+                    <h5>سیگنال خرید و فروش دقیق</h5>
+                    <p class="text-muted">دریافت سیگنال‌های معاملاتی با نقاط ورود، خروج و مدیریت ریسک مشخص</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card h-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-fire text-primary"></i>
+                    </div>
+                    <h5>بررسی توکن‌های ترند و جدید</h5>
+                    <p class="text-muted">شناسایی فرصت‌های سرمایه‌گذاری در توکن‌های جدید و ترند بازار</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card h-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt text-primary"></i>
+                    </div>
+                    <h5>مدیریت ریسک خودکار</h5>
+                    <p class="text-muted">محاسبه اندازه پوزیشن، حد ضرر و سود مناسب بر اساس سرمایه شما</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card h-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-whale text-primary"></i>
+                    </div>
+                    <h5>آنالیز هولدرها و نهنگ‌ها</h5>
+                    <p class="text-muted">بررسی حرکات بزرگ سرمایه‌داران و تحلیل رفتار هولدرهای اصلی</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card h-100">
+                    <div class="feature-icon">
+                        <i class="fab fa-telegram text-primary"></i>
+                    </div>
+                    <h5>رابط ساده در تلگرام</h5>
+                    <p class="text-muted">دسترسی آسان و سریع به تمام امکانات از طریق ربات تلگرام</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section id="pricing" class="pricing-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="section-title">پلن‌های قیمت‌گذاری TNT</h2>
+                <p class="section-subtitle text-muted">انتخاب پلن مناسب برای نیازهای تریدینگ شما</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <!-- TNT Mini -->
+            <div class="col-lg-4">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h4>TNT Mini</h4>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">10</span>
+                            <span class="period">/ماه</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check text-success me-2"></i>۶۰ تحلیل در ماه</li>
+                        <li><i class="fas fa-check text-success me-2"></i>۲ تحلیل در ساعت</li>
+                        <li><i class="fas fa-check text-success me-2"></i>تحلیل تصویری هوشمند</li>
+                        <li><i class="fas fa-check text-success me-2"></i>گزارش مدیریت سرمایه</li>
+                        <li><i class="fas fa-check text-success me-2"></i>لیست توکن‌های ترند</li>
+                    </ul>
+                    <a href="https://t.me/NarmoonAI_BOT" class="btn btn-outline-primary w-100" target="_blank">انتخاب پلن</a>
+                </div>
+            </div>
+            
+            <!-- TNT Plus -->
+            <div class="col-lg-4">
+                <div class="pricing-card featured">
+                    <div class="popular-badge">محبوب</div>
+                    <div class="pricing-header">
+                        <h4>TNT Plus</h4>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">18</span>
+                            <span class="period">/ماه</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check text-success me-2"></i>۱۵۰ تحلیل در ماه</li>
+                        <li><i class="fas fa-check text-success me-2"></i>۴ تحلیل در ساعت</li>
+                        <li><i class="fas fa-check text-success me-2"></i>همه امکانات Mini</li>
+                        <li><i class="fas fa-check text-success me-2"></i>سرعت پردازش بالاتر</li>
+                        <li><i class="fas fa-check text-success me-2"></i>اولویت پشتیبانی</li>
+                    </ul>
+                    <a href="https://t.me/NarmoonAI_BOT" class="btn btn-primary w-100" target="_blank">انتخاب پلن</a>
+                </div>
+            </div>
+            
+            <!-- TNT Max -->
+            <div class="col-lg-4">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h4>TNT Max</h4>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">39</span>
+                            <span class="period">/ماه</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check text-success me-2"></i>۴۰۰ تحلیل ماهانه</li>
+                        <li><i class="fas fa-check text-success me-2"></i>۸ تحلیل در ساعت</li>
+                        <li><i class="fas fa-check text-success me-2"></i>دسترسی VIP</li>
+                        <li><i class="fas fa-check text-success me-2"></i>سیگنال‌های اختصاصی</li>
+                        <li><i class="fas fa-check text-success me-2"></i>امکانات آتی</li>
+                    </ul>
+                    <a href="https://t.me/NarmoonAI_BOT" class="btn btn-outline-primary w-100" target="_blank">انتخاب پلن</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="how-it-works py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="section-title">چگونه کار می‌کند؟</h2>
+                <p class="section-subtitle text-muted">در ۳ مرحله ساده به تحلیل حرفه‌ای برسید</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 text-center">
+                <div class="step-item">
+                    <div class="step-number">۱</div>
+                    <i class="fas fa-telegram fa-3x text-primary mb-3"></i>
+                    <h5>ورود به ربات</h5>
+                    <p class="text-muted">روی دکمه "شروع با ربات تلگرامی" کلیک کرده و وارد ربات نارموون شوید</p>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="step-item">
+                    <div class="step-number">۲</div>
+                    <i class="fas fa-camera fa-3x text-primary mb-3"></i>
+                    <h5>ارسال تصویر چارت</h5>
+                    <p class="text-muted">اسکرین‌شات چارت مورد نظر خود را از هر پلتفرم معاملاتی ارسال کنید</p>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="step-item">
+                    <div class="step-number">۳</div>
+                    <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
+                    <h5>دریافت تحلیل</h5>
+                    <p class="text-muted">در چند ثانیه تحلیل کامل با نقاط ورود، خروج و مدیریت ریسک دریافت کنید</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="section-title">سوالات متداول</h2>
+                <p class="section-subtitle text-muted">پاسخ سوالات رایج کاربران</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                نارموون چیست و چه کاربردی دارد؟
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                نارموون یک دستیار هوش مصنوعی مبتنی بر GPT-4o است که تحلیل تخصصی بازارهای مالی (رمزارز، فارکس، سهام و طلا) و ارائه سیگنال‌های معاملاتی هوشمند را انجام می‌دهد.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                آیا می‌توانم مستقیماً از طریق نارموون معامله کنم؟
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                خیر؛ نارموون صرفاً ابزار تحلیل و سیگنال‌دهی است و هیچ عملیات خرید، فروش یا مدیریت دارایی را انجام نمی‌دهد. امنیت شما اولویت ماست.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                امنیت اطلاعات من چگونه تضمین می‌شود؟
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                نارموون هیچ‌گاه اطلاعات شخصی، کلید خصوصی یا دسترسی به صرافی‌ها را دریافت نمی‌کند. تنها تصاویر چارت ارسالی شما برای تحلیل استفاده می‌شود.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                تفاوت نارموون دکس و نارموون کوین چیست؟
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <strong>نارموون دکس:</strong> تحلیل توکن‌های DEX سولانا، میم‌کوین‌ها و شناسایی فرصت‌های جدید<br>
+                                <strong>نارموون کوین:</strong> تحلیل کوین‌های اصلی، داده‌های بازار جهانی و آمار DeFi
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                آیا سیگنال‌ها و تحلیل‌های نارموون تضمینی هستند؟
+                            </button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                خیر. تمام تحلیل‌ها صرفاً جنبه آموزشی دارند و هیچ تضمینی برای سود وجود ندارد. مدیریت ریسک همیشه ضروری است.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="mb-4">آماده شروع هستید؟</h2>
+                <p class="lead mb-4">همین حالا با ربات نارموون شروع کنید و از قدرت هوش مصنوعی در تریدینگ استفاده کنید</p>
+                <a href="https://t.me/NarmoonAI_BOT" class="btn btn-light btn-lg" target="_blank">
+                    <i class="fab fa-telegram me-2"></i>شروع رایگان
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

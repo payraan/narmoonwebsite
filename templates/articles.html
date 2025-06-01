@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 class="display-4 fw-bold mb-3">مقالات آموزشی نارموون</h1>
+                <p class="lead text-muted">مقالات تخصصی و آموزشی برای تقویت دانش شما در تحلیل بازارهای مالی</p>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center">
+                        <li class="breadcrumb-item"><a href="{{ url_for('home') }}">خانه</a></li>
+                        <li class="breadcrumb-item active">مقالات</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Articles Section -->
+<section class="articles-section py-5">
+    <div class="container">
+        {% if articles %}
+        <div class="article-grid">
+            {% for article in articles %}
+            <article class="article-card">
+                <div class="article-meta">
+                    <span class="author">
+                        <i class="fas fa-user me-1"></i>{{ article.author }}
+                    </span>
+                    <span class="date">
+                        <i class="fas fa-calendar me-1"></i>{{ article.date.strftime('%d %B %Y') }}
+                    </span>
+                </div>
+                <h2 class="article-title">
+                    <a href="{{ url_for('article_detail', article_id=article.id) }}">{{ article.title }}</a>
+                </h2>
+                <p class="article-summary text-muted">{{ article.summary }}</p>
+                <div class="article-tags">
+                    {% for tag in article.tags %}
+                    <span class="tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                <div class="article-footer mt-3">
+                    <a href="{{ url_for('article_detail', article_id=article.id) }}" class="btn btn-outline-primary">
+                        مطالعه کامل <i class="fas fa-arrow-left ms-2"></i>
+                    </a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+        <!-- Coming Soon Message -->
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <div class="coming-soon-card p-5">
+                    <i class="fas fa-newspaper fa-4x text-primary mb-4"></i>
+                    <h3 class="mb-3">مقالات آموزشی به‌زودی...</h3>
+                    <p class="lead text-muted mb-4">
+                        تیم نارموون در حال تهیه مجموعه‌ای از مقالات تخصصی و آموزشی برای شما است. 
+                        این مقالات هفته‌ای ۲ بار منتشر می‌شوند و شامل آخرین تحلیل‌ها و روش‌های معاملاتی خواهد بود.
+                    </p>
+                    <div class="upcoming-topics">
+                        <h5 class="mb-3">موضوعات در دست تولید:</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="topic-item d-flex align-items-center">
+                                    <i class="fas fa-brain text-primary me-3"></i>
+                                    <span>هوش مصنوعی در تحلیل بازار</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="topic-item d-flex align-items-center">
+                                    <i class="fas fa-chart-bar text-primary me-3"></i>
+                                    <span>تحلیل تکنیکال پیشرفته</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="topic-item d-flex align-items-center">
+                                    <i class="fas fa-coins text-primary me-3"></i>
+                                    <span>راهنمای بازار رمزارزها</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="topic-item d-flex align-items-center">
+                                    <i class="fas fa-exchange-alt text-primary me-3"></i>
+                                    <span>استراتژی‌های معاملاتی</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="topic-item d-flex align-items-center">
+                                    <i class="fas fa-dollar-sign text-primary me-3"></i>
+                                    <span>تحلیل بازار فارکس</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="topic-item d-flex align-items-center">
+                                    <i class="fas fa-shield-alt text-primary me-3"></i>
+                                    <span>مدیریت ریسک در تریدینگ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="newsletter-signup mt-4">
+                        <h6 class="mb-3">از انتشار مقالات جدید باخبر شوید:</h6>
+                        <a href="https://t.me/NarmoonAI_BOT" class="btn btn-primary btn-lg" target="_blank">
+                            <i class="fab fa-telegram me-2"></i>عضویت در کانال نارموون
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="newsletter-section py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h3 class="mb-3">از آخرین مقالات باخبر شوید</h3>
+                <p class="lead mb-4">
+                    هفته‌ای ۲ مقاله جدید درباره تحلیل بازارهای مالی و استفاده از هوش مصنوعی در تریدینگ منتشر می‌کنیم
+                </p>
+                <a href="https://t.me/NarmoonAI_BOT" class="btn btn-light btn-lg" target="_blank">
+                    <i class="fab fa-telegram me-2"></i>عضویت در ربات نارموون
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.coming-soon-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.topic-item, .feature-item {
+    padding: 10px 0;
+    font-weight: 500;
+}
+
+.upcoming-topics {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 25px;
+    margin: 30px 0;
+}
+
+.newsletter-signup {
+    background: var(--primary-color);
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.article-footer {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.breadcrumb-item a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+}
+</style>
+{% endblock %}

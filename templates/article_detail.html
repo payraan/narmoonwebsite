@@ -1,0 +1,284 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<!-- Article Header -->
+<section class="article-header py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb justify-content-center">
+                        <li class="breadcrumb-item"><a href="{{ url_for('home') }}">خانه</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url_for('articles') }}">مقالات</a></li>
+                        <li class="breadcrumb-item active">{{ article.title }}</li>
+                    </ol>
+                </nav>
+                <h1 class="display-5 fw-bold mb-4">{{ article.title }}</h1>
+                <div class="article-meta d-flex justify-content-center align-items-center flex-wrap">
+                    <span class="me-4 mb-2">
+                        <i class="fas fa-user text-primary me-2"></i>{{ article.author }}
+                    </span>
+                    <span class="me-4 mb-2">
+                        <i class="fas fa-calendar text-primary me-2"></i>{{ article.date.strftime('%d %B %Y') }}
+                    </span>
+                    <span class="me-4 mb-2">
+                        <i class="fas fa-folder text-primary me-2"></i>{{ article.category }}
+                    </span>
+                </div>
+                <div class="article-tags mt-3">
+                    {% for tag in article.tags %}
+                    <span class="badge bg-primary me-2 mb-2">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Article Content -->
+<section class="article-detail py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- Article Body -->
+                <div class="article-content">
+                    <div class="lead mb-4">{{ article.summary }}</div>
+                    
+                    {% if article.content %}
+                        {{ article.content | safe }}
+                    {% else %}
+                        <!-- Sample Content for Demo -->
+                        <h3>مقدمه</h3>
+                        <p>
+                            در دنیای امروز، بازارهای مالی پیچیده‌تر از همیشه شده‌اند و تحلیل آن‌ها نیازمند ابزارهای پیشرفته است. 
+                            هوش مصنوعی به عنوان یکی از فناوری‌های انقلابی، توانایی تحلیل حجم عظیمی از داده‌ها را در زمان کوتاه دارد.
+                        </p>
+                        
+                        <h3>نقش هوش مصنوعی در تحلیل بازار</h3>
+                        <p>
+                            هوش مصنوعی می‌تواند الگوهای پیچیده‌ای را در نمودارهای قیمت شناسایی کند که برای چشم انسان قابل تشخیص نیست. 
+                            این قابلیت به معامله‌گران کمک می‌کند تا تصمیمات بهتری بگیرند.
+                        </p>
+                        
+                        <blockquote class="blockquote border-start border-5 border-primary ps-4 my-4">
+                            <p class="mb-0">
+                                "استفاده از هوش مصنوعی در تحلیل بازارهای مالی، دقت تحلیل‌ها را تا ۸۰٪ افزایش می‌دهد."
+                            </p>
+                            <footer class="blockquote-footer mt-2">تحقیقات نارموون</footer>
+                        </blockquote>
+                        
+                        <h3>مزایای استفاده از نارموون</h3>
+                        <ul class="list-group list-group-flush my-4">
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="fas fa-check-circle text-success me-3"></i>
+                                تحلیل تصویری نمودار در چند ثانیه
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="fas fa-check-circle text-success me-3"></i>
+                                سیگنال‌های خرید و فروش دقیق
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="fas fa-check-circle text-success me-3"></i>
+                                مدیریت ریسک هوشمند
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="fas fa-check-circle text-success me-3"></i>
+                                پشتیبانی از بازارهای مختلف
+                            </li>
+                        </ul>
+                        
+                        <h3>نتیجه‌گیری</h3>
+                        <p>
+                            با پیشرفت تکنولوژی، استفاده از ابزارهای هوش مصنوعی مانند نارموون در تحلیل بازارهای مالی 
+                            نه تنها توصیه می‌شود بلکه ضروری است. این ابزارها به شما کمک می‌کنند تا در بازاری رقابتی، 
+                            همیشه یک قدم جلوتر باشید.
+                        </p>
+                    {% endif %}
+                </div>
+                
+                <!-- Share Buttons -->
+                <div class="article-share mt-5 pt-4 border-top">
+                    <h6 class="mb-3">اشتراک‌گذاری:</h6>
+                    <div class="share-buttons">
+                        <a href="https://t.me/share/url?url={{ request.url }}&text={{ article.title }}" 
+                           target="_blank" 
+                           class="btn btn-outline-primary me-2 mb-2">
+                            <i class="fab fa-telegram me-1"></i>تلگرام
+                        </a>
+                        <a href="https://twitter.com/intent/tweet?url={{ request.url }}&text={{ article.title }}" 
+                           target="_blank" 
+                           class="btn btn-outline-info me-2 mb-2">
+                            <i class="fab fa-twitter me-1"></i>توییتر
+                        </a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.url }}" 
+                           target="_blank" 
+                           class="btn btn-outline-primary me-2 mb-2">
+                            <i class="fab fa-linkedin me-1"></i>لینکدین
+                        </a>
+                        <button onclick="copyArticleLink()" class="btn btn-outline-secondary me-2 mb-2">
+                            <i class="fas fa-copy me-1"></i>کپی لینک
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Articles -->
+{% if related_articles %}
+<section class="related-articles py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="text-center mb-5">مقالات مرتبط</h3>
+            </div>
+        </div>
+        <div class="row g-4">
+            {% for related in related_articles %}
+            <div class="col-lg-4">
+                <div class="article-card h-100">
+                    <div class="article-meta">
+                        <span class="date">
+                            <i class="fas fa-calendar me-1"></i>{{ related.date.strftime('%d %B %Y') }}
+                        </span>
+                    </div>
+                    <h5 class="article-title">
+                        <a href="{{ url_for('article_detail', article_id=related.id) }}">{{ related.title }}</a>
+                    </h5>
+                    <p class="text-muted">{{ related.summary }}</p>
+                    <div class="article-tags">
+                        {% for tag in related.tags[:3] %}
+                        <span class="tag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- CTA Section -->
+<section class="article-cta py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h3 class="mb-3">از مطالعه مقاله لذت بردید؟</h3>
+                <p class="lead mb-4">
+                    همین حالا ربات نارموون را امتحان کنید و از قدرت هوش مصنوعی در تحلیل بازارهای مالی استفاده کنید
+                </p>
+                <a href="https://t.me/NarmoonAI_BOT" class="btn btn-light btn-lg" target="_blank">
+                    <i class="fab fa-telegram me-2"></i>شروع با ربات نارموون
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+function copyArticleLink() {
+    const url = window.location.href;
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(function() {
+            showNotification('لینک مقاله کپی شد!', 'success');
+        });
+    } else {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        showNotification('لینک مقاله کپی شد!', 'success');
+    }
+}
+
+// Reading progress indicator
+document.addEventListener('DOMContentLoaded', function() {
+    // Create progress bar
+    const progressBar = document.createElement('div');
+    progressBar.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: var(--primary-color);
+        z-index: 1000;
+        transition: width 0.3s ease;
+    `;
+    document.body.appendChild(progressBar);
+    
+    // Update progress on scroll
+    window.addEventListener('scroll', function() {
+        const article = document.querySelector('.article-content');
+        if (article) {
+            const articleTop = article.offsetTop;
+            const articleHeight = article.offsetHeight;
+            const windowTop = window.pageYOffset;
+            const windowHeight = window.innerHeight;
+            
+            const progress = Math.min(
+                100,
+                Math.max(0, (windowTop - articleTop + windowHeight) / articleHeight * 100)
+            );
+            
+            progressBar.style.width = progress + '%';
+        }
+    });
+});
+</script>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.article-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.article-content h3 {
+    color: var(--primary-color);
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.article-content p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.article-content blockquote {
+    font-style: italic;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.share-buttons .btn {
+    transition: all 0.3s ease;
+}
+
+.share-buttons .btn:hover {
+    transform: translateY(-2px);
+}
+
+.breadcrumb-item a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+}
+</style>
+{% endblock %}
