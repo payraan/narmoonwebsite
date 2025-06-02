@@ -16,14 +16,14 @@
     <meta property="og:description" content="{% block og_description %}{{ self.meta_description() }}{% endblock %}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.url }}">
-    <meta property="og:image" content="{{ url_for('static', path='images/narmoon-og.jpg') }}">
+    <meta property="og:image" content="{{ url_for('static', path='images/narmoon-og.webp') }}">
     <meta property="og:locale" content="fa_IR">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ self.og_title() }}">
     <meta name="twitter:description" content="{{ self.og_description() }}">
-    <meta name="twitter:image" content="{{ url_for('static', path='images/narmoon-og.jpg') }}">
+    <meta name="twitter:image" content="{{ url_for('static', path='images/narmoon-og.webp') }}">
     
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#3b82f6">

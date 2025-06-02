@@ -29,7 +29,14 @@
             </div>
             <div class="col-lg-6">
                 <div class="hero-image text-center">
-                    <img src="{{ url_for('static', path='images/hero-dashboard.png') }}" alt="نارموون Dashboard" class="img-fluid rounded-3 shadow-lg">
+                    <picture>
+                        <source srcset="{{ url_for('static', path='images/hero-dashboard.webp') }}" type="image/webp">
+                        <img src="{{ url_for('static', path='images/hero-dashboard.png') }}" 
+                             alt="نارموون Dashboard" 
+                             class="img-fluid rounded-3 shadow-lg"
+                             loading="lazy"
+                             decoding="async">
+                    </picture>
                 </div>
             </div>
         </div>
