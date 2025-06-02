@@ -25,9 +25,17 @@
     <meta name="twitter:description" content="{{ self.og_description() }}">
     <meta name="twitter:image" content="{{ url_for('static', path='images/narmoon-og.jpg') }}">
     
-    <!-- Favicon -->
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="نارموون">
+    <meta name="msapplication-TileColor" content="#3b82f6">
+    
+    <!-- Favicon & PWA Icons -->
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', path='images/favicon.ico') }}">
     <link rel="apple-touch-icon" href="{{ url_for('static', path='images/apple-touch-icon.png') }}">
+    <link rel="manifest" href="/manifest.json">
     
     <!-- Bootstrap 5 RTL -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
@@ -160,13 +168,76 @@
     <!-- Custom JS -->
     <script src="{{ url_for('static', path='js/main.js') }}"></script>
     
+    <!-- PWA Service Worker -->
+    <script>
+        // ثبت Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/static/js/sw.js')
+                    .then(function(registration) {
+                        console.log('✅ Service Worker ثبت شد:', registration.scope);
+                    }, function(err) {
+                        console.log('❌ Service Worker ثبت نشد:', err);
+                    });
+            });
+        }
+
+        // PWA Install Button
+        let deferredPrompt;
+        const installButton = document.createElement('button');
+        installButton.textContent = '📱 نصب اپ';
+        installButton.className = 'btn btn-outline-primary btn-sm position-fixed';
+        installButton.style.cssText = `
+            bottom: 20px;
+            right: 80px;
+            z-index: 1000;
+            display: none;
+            border-radius: 25px;
+            font-size: 14px;
+            padding: 8px 16px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        `;
+        document.body.appendChild(installButton);
+
+        // نمایش دکمه نصب
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installButton.style.display = 'block';
+        });
+
+        // کلیک روی دکمه نصب
+        installButton.addEventListener('click', (e) => {
+            installButton.style.display = 'none';
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('✅ کاربر اپ را نصب کرد');
+                    } else {
+                        console.log('❌ کاربر اپ را نصب نکرد');
+                    }
+                    deferredPrompt = null;
+                });
+            }
+        });
+
+        // مخفی کردن دکمه بعد از نصب
+        window.addEventListener('appinstalled', (evt) => {
+            console.log('✅ اپ نصب شد');
+            installButton.style.display = 'none';
+        });
+    </script>
+    
     {% block extra_scripts %}{% endblock %}
     
     <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VPSEE0QF1E"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-VPSEE0QF1E');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VPSEE0QF1E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VPSEE0QF1E');
+    </script>
+</body>
+</html>

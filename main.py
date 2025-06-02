@@ -34,7 +34,7 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         # Content Security Policy
         csp_policy = (
             "default-src 'self' https:; "
-            "script-src 'self' 'unsafe-inline' 'unsafe-eval' "
+            "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' "
             "https://cdn.jsdelivr.net https://cdnjs.cloudflare.com "
             "https://www.googletagmanager.com https://www.google-analytics.com "
             "https://googleads.g.doubleclick.net https://*.railway.app; "
@@ -43,11 +43,11 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
             "https://fonts.googleapis.com https://*.railway.app; "
             "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; "
             "img-src 'self' data: https: http: https://*.railway.app; "
-            "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.google.com https://*.railway.app; "
+            "connect-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com https://www.google-analytics.com https://analytics.google.com https://www.google.com https://*.railway.app; "
             "frame-src https://www.youtube.com https://youtube.com https://www.googletagmanager.com https://td.doubleclick.net; "
             "object-src 'none'; "
             "base-uri 'self'; "
-            "form-action 'self';"
+            "form-action 'self';" 
         )
 
         response.headers["Content-Security-Policy"] = csp_policy
@@ -289,31 +289,53 @@ Crawl-delay: 1"""
 @app.get("/manifest.json", response_class=Response)
 async def manifest():
     """Web App Manifest برای PWA"""
+    import json
+    
     manifest_json = {
-        "name": "نارموون - تحلیلگر هوش مصنوعی",
+        "name": "نارموون - تحلیلگر هوش مصنوعی بازارهای مالی",
         "short_name": "نارموون",
-        "description": "تحلیل بازارهای مالی با هوش مصنوعی",
+        "description": "اولین ربات تلگرامی فارسی برای تحلیل بازارهای مالی با هوش مصنوعی",
         "start_url": "/",
+        "scope": "/",
         "display": "standalone",
         "background_color": "#ffffff",
         "theme_color": "#3b82f6",
-        "orientation": "portrait",
+        "orientation": "portrait-primary",
+        "categories": ["finance", "productivity", "business"],
+        "lang": "fa",
+        "dir": "rtl",
         "icons": [
             {
                 "src": "/static/images/logo-192.png",
                 "sizes": "192x192",
-                "type": "image/png"
+                "type": "image/png",
+                "purpose": "any maskable"
             },
             {
-                "src": "/static/images/logo-512.png",
+                "src": "/static/images/logo-512.png", 
                 "sizes": "512x512",
-                "type": "image/png"
+                "type": "image/png",
+                "purpose": "any maskable"
+            },
+            {
+                "src": "/static/images/favicon.ico",
+                "sizes": "48x48",
+                "type": "image/x-icon"
+            }
+        ],
+        "screenshots": [
+            {
+                "src": "/static/images/hero-dashboard.png",
+                "sizes": "1280x720",
+                "type": "image/png",
+                "form_factor": "wide",
+                "label": "Dashboard نارموون"
             }
         ]
     }
     
     return Response(
-        content=str(manifest_json).replace("'", '"'),
+        content=json.dumps(manifest_json, ensure_ascii=False, indent=2),
         media_type="application/json"
     )
 
