@@ -1,12 +1,12 @@
 // Service Worker برای PWA نارموون
-const CACHE_NAME = 'narmoon-v1.0.0';
+const CACHE_NAME = 'narmoon-v2.0.0';
 const urlsToCache = [
   '/',
-  '/static/css/style.css',
-  '/static/js/main.js',
+  '/static/css/style.min.css',        // ✅ minified
+  '/static/js/main.min.js',           // ✅ minified  
   '/static/images/logo.png',
   '/static/images/logo-white.png',
-  '/static/images/hero-dashboard.png',
+  '/static/images/hero-dashboard.webp', // ✅ WebP
   '/static/images/favicon.ico',
   '/manifest.json',
   'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css',
