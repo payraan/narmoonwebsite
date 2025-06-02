@@ -343,7 +343,8 @@ p {
 }
 
 .navbar-nav .nav-link {
-  font-weight: var(--font-medium);
+  font-weight: var(--font-bold);
+  font-size: var(--text-lg);
   color: var(--gray-700) !important;
   padding: var(--space-3) var(--space-4) !important;
   margin: 0 var(--space-1);
@@ -453,7 +454,8 @@ p {
 
 .hero-content .lead {
   font-size: var(--text-xl);
-  color: var(--gray-600);
+  font-weight: var(--font-bold);
+  color: var(--gray-700);
   line-height: 1.8;
   margin-bottom: var(--space-8);
   max-width: 600px;
@@ -631,7 +633,8 @@ p {
 .feature-icon {
   width: 80px;
   height: 80px;
-  background: var(--gradient-primary);
+  background: white;
+  border: 3px solid var(--primary-500);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -639,6 +642,7 @@ p {
   margin-bottom: var(--space-6);
   position: relative;
   transition: all var(--transition-normal);
+  box-shadow: var(--shadow-md);
 }
 
 .feature-icon::before {
@@ -659,8 +663,9 @@ p {
 }
 
 .feature-icon i {
-  font-size: 2rem;
-  color: white;
+  font-size: 2.5rem;
+  color: var(--primary-600);
+  font-weight: 900;
   transition: all var(--transition-normal);
 }
 
@@ -670,7 +675,7 @@ p {
 
 .feature-card h5 {
   color: var(--gray-900);
-  font-weight: var(--font-bold);
+  font-weight: var(--font-extrabold);
   margin-bottom: var(--space-4);
   font-size: var(--text-xl);
 }
@@ -714,7 +719,7 @@ p {
 
 .pricing-card:hover {
   transform: translateY(-15px);
-  box-shadow: 
+  box-shadow:
     0 35px 70px -12px rgba(59, 130, 246, 0.2),
     0 0 0 1px var(--primary-200);
   border-color: var(--primary-200);
@@ -726,7 +731,7 @@ p {
 }
 
 .pricing-card.featured {
-  background: var(--gradient-primary);
+  background: linear-gradient(135deg, var(--primary-300) 0%, var(--primary-500) 100%);
   color: white;
   transform: scale(1.05);
   z-index: 2;
@@ -738,11 +743,11 @@ p {
 
 .popular-badge {
   position: absolute;
-  top: -15px;
-  right: 30px;
+  top: 15px;
+  right: 15px;
   background: var(--gradient-warm);
   color: white;
-  padding: var(--space-2) var(--space-6);
+  padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-full);
   font-size: var(--text-sm);
   font-weight: var(--font-bold);
@@ -936,3 +941,65 @@ p {
 .stat-item:nth-child(2) { animation-delay: 0.2s; }
 .stat-item:nth-child(3) { animation-delay: 0.3s; }
 .stat-item:nth-child(4) { animation-delay: 0.4s; }
+
+/* Pricing Text Improvements */
+.pricing-header h4 {
+  font-weight: var(--font-extrabold) !important;
+}
+
+.pricing-features li {
+  font-weight: var(--font-semibold) !important;
+}
+
+.price .amount {
+  font-weight: var(--font-black) !important;
+}
+
+.price .currency,
+.price .period {
+  font-weight: var(--font-bold) !important;
+}
+
+/* How It Works Section Improvements */
+.step-item h5 {
+  font-weight: var(--font-extrabold) !important;
+  font-size: var(--text-xl) !important;
+}
+
+.step-number {
+  font-weight: var(--font-black) !important;
+  font-size: var(--text-2xl) !important;
+  color: var(--primary-600) !important;
+  background: var(--primary-50);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-4) auto;
+  border: 3px solid var(--primary-200);
+}
+
+/* FAQ Section Improvements */
+.accordion-button {
+  font-weight: var(--font-bold) !important;
+  font-size: var(--text-lg) !important;
+}
+
+.accordion-body {
+  font-weight: var(--font-medium) !important;
+  line-height: 1.8 !important;
+}
+
+
+/* CTA Section Text Color Fix */
+.cta-section p.lead {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: var(--font-medium) !important;
+}
+
+.cta-section h2 {
+  color: white !important;
+  font-weight: var(--font-bold) !important;
+}
