@@ -1,7 +1,34 @@
 /* نارموون - Modern CSS Framework 2025 */
 
 /* ========== MODERN IMPORTS ========== */
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+/* Modern Persian Fonts */
+@font-face {
+  font-family: 'IRANSansX';
+  src: url('../fonts/IRANSansX-RegularD4.woff2') format('woff2');
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IRANSansX';
+  src: url('../fonts/IRANSansX-BoldD4.woff2') format('woff2');
+  font-weight: bold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alibaba';
+  src: url('../fonts/Alibaba-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alibaba';
+  src: url('../fonts/Alibaba-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-display: swap;
+}
 
 /* ========== MODERN CSS VARIABLES ========== */
 :root {
@@ -44,8 +71,9 @@
   --gray-800: #1f2937;
   --gray-900: #111827;
   
-  /* Typography */
-  --font-primary: 'Vazirmatn', 'Segoe UI', Tahoma, Arial, sans-serif;
+/* Typography */
+  --font-primary: 'IRANSansX', 'Segoe UI', Tahoma, Arial, sans-serif;
+  --font-display: 'Alibaba', 'IRANSansX', 'Segoe UI', Tahoma, Arial, sans-serif;
   --font-mono: 'Courier New', monospace;
   
   /* Font Sizes - Modern Scale */
@@ -152,6 +180,8 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-variant-numeric: persian;
+  font-feature-settings: "locl";
 }
 
 /* ========== TYPOGRAPHY ========== */
@@ -412,8 +442,9 @@ p {
 }
 
 .hero-content h1 {
+  font-family: var(--font-display);
   font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: var(--font-black);
+  font-weight: bold;
   line-height: 1.2;
   margin-bottom: var(--space-6);
   color: var(--gray-900);
