@@ -32,17 +32,17 @@
 
 /* ========== MODERN CSS VARIABLES ========== */
 :root {
-  /* Primary Colors - Modern Blue Gradient */
-  --primary-50: #eff6ff;
-  --primary-100: #dbeafe;
-  --primary-200: #bfdbfe;
-  --primary-300: #93c5fd;
-  --primary-400: #60a5fa;
-  --primary-500: #3b82f6;
-  --primary-600: #2563eb;
-  --primary-700: #1d4ed8;
-  --primary-800: #1e40af;
-  --primary-900: #1e3a8a;
+/* Primary Colors - Turquoise Brand Gradient */
+  --primary-50: #f0fdfc;
+  --primary-100: #ccfbf4;
+  --primary-200: #99f7ed;
+  --primary-300: #5eead4;
+  --primary-400: #2dd4bf;
+  --primary-500: #58f4e2;
+  --primary-600: #0db6a8;
+  --primary-700: #0f9488;
+  --primary-800: #115e59;
+  --primary-900: #134e4a;
   
   /* Success Colors */
   --success-50: #ecfdf5;
@@ -162,20 +162,20 @@
   margin: 0;
   padding: 0;
 }
-
+  
 html {
-  font-size: 16px;
+  font-size: 16px;   
   line-height: 1.6;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
-
+  
 body {
   font-family: var(--font-primary);
   font-weight: var(--font-normal);
   color: var(--gray-900);
-  background-color: white;
-  direction: rtl;
+  background-color: #a6a6a6;
+  direction: rtl;   
   text-align: right;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
