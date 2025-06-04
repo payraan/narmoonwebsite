@@ -37,13 +37,13 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
             "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' "
             "https://cdn.jsdelivr.net https://cdnjs.cloudflare.com "
             "https://www.googletagmanager.com https://www.google-analytics.com "
-            "https://googleads.g.doubleclick.net https://*.railway.app; "
+            "https://googleads.g.doubleclick.net https://*.railway.app https://narmoon.io https://www.narmoon.io; "
             "style-src 'self' 'unsafe-inline' "
             "https://cdn.jsdelivr.net https://cdnjs.cloudflare.com "
-            "https://fonts.googleapis.com https://*.railway.app; "
+            "https://fonts.googleapis.com https://*.railway.app https://narmoon.io https://www.narmoon.io; "
             "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; "
-            "img-src 'self' data: https: http: https://*.railway.app; "
-            "connect-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com https://www.google-analytics.com https://analytics.google.com https://www.google.com https://*.railway.app; "
+            "img-src 'self' data: https: http: https://*.railway.app https://narmoon.io https://www.narmoon.io; "
+            "connect-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com https://www.google-analytics.com https://analytics.google.com https://www.google.com https://*.railway.app https://narmoon.io https://www.narmoon.io; "
             "frame-src https://www.youtube.com https://youtube.com https://www.googletagmanager.com https://td.doubleclick.net; "
             "object-src 'none'; "
             "base-uri 'self'; "
@@ -76,7 +76,7 @@ app.add_middleware(SecurityHeadersMiddleware)
 app.add_middleware(GZipMiddleware, minimum_size=1000)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://narmoonwebsite-production.up.railway.app", "https://localhost:8000"],
+    allow_origins=["https://narmoon.io", "https://www.narmoon.io", "https://localhost:8000"],
     allow_credentials=True,
     allow_methods=["GET", "POST"],
     allow_headers=["*"],
@@ -90,7 +90,7 @@ app.mount("/static", StaticFiles(directory="static", html=True), name="static")
 async def force_https(request: Request, call_next):
     # Force HTTPS redirect only in production
     if (request.headers.get("x-forwarded-proto") == "http" and 
-        "railway.app" in request.headers.get("host", "")):
+        ("narmoon.io" in request.headers.get("host", "") or "railway.app" in request.headers.get("host", ""))):
         url = request.url.replace(scheme="https")
         return RedirectResponse(url=str(url), status_code=301)
     
