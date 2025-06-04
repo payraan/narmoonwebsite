@@ -85,49 +85,59 @@
     </script>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header sticky-top">
-        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-            <div class="container">
-                <!-- Logo -->
-                <a class="navbar-brand" href="{{ url_for('home') }}">
-                    <img src="{{ url_for('static', path='images/logo.png') }}" alt="نارموون" height="50" class="d-inline-block align-text-top">
-                    <span class="brand-text me-2">نارموون</span>
-                </a>
-                
-                <!-- Mobile Toggle -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <!-- Navigation -->
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.url.path == '/' %}active{% endif %}" href="{{ url_for('home') }}">
-                                <i class="fas fa-home me-1"></i>خانه
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if 'videos' in request.url.path %}active{% endif %}" href="{{ url_for('videos') }}">
-                                <i class="fas fa-play-circle me-1"></i>ویدیوهای آموزشی
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if 'articles' in request.url.path %}active{% endif %}" href="{{ url_for('articles') }}">
-                                <i class="fas fa-newspaper me-1"></i>مقالات
-                            </a>
-                        </li>
-                    </ul>
-                    
-                    <!-- CTA Button -->
-                    <a href="https://t.me/NarmoonAI_BOT" class="btn btn-primary cta-btn" target="_blank">
-                        <i class="fab fa-telegram me-2"></i>شروع با ربات تلگرامی
-                    </a>
-                </div>
-            </div>
-        </nav>
-    </header>
+   <!-- Header -->
+   <header class="header sticky-top">
+       <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+           <div class="container">
+               <!-- Logo -->
+               <a class="navbar-brand" href="{{ url_for('home') }}">
+                   <img src="{{ url_for('static', path='images/logo.png') }}" alt="نارموون" height="50" class="d-inline-block align-text-top">
+                   <span class="brand-text me-2">نارموون</span>
+               </a>
+
+               <!-- Mobile Toggle -->
+               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                   <span class="navbar-toggler-icon"></span>
+               </button>
+
+               <!-- Navigation -->
+               <div class="collapse navbar-collapse" id="navbarNav">
+                   <ul class="navbar-nav me-auto">
+                       <li class="nav-item">
+                           <a class="nav-link {% if request.url.path == '/' %}active{% endif %}" href="{{ url_for('home') }}">
+                               <i class="fas fa-home me-1"></i>خانه
+                           </a>
+                       </li>
+                       <li class="nav-item">
+                           <a class="nav-link {% if 'about' in request.url.path %}active{% endif %}" href="/about">
+                               <i class="fas fa-info-circle me-1"></i>درباره نارموون
+                           </a>
+                       </li>
+                       <li class="nav-item">
+                           <a class="nav-link {% if 'blog' in request.url.path %}active{% endif %}" href="/blog">
+                               <i class="fas fa-blog me-1"></i>وبلاگ
+                           </a>
+                       </li>
+                       <li class="nav-item">
+                           <a class="nav-link {% if 'videos' in request.url.path %}active{% endif %}" href="{{ url_for('videos') }}">
+                               <i class="fas fa-play-circle me-1"></i>ویدیوهای آموزشی
+                           </a>
+                       </li>
+                       <li class="nav-item">
+                           <a class="nav-link {% if 'articles' in request.url.path %}active{% endif %}" href="{{ url_for('articles') }}">
+                               <i class="fas fa-newspaper me-1"></i>مقالات آموزشی
+                           </a>
+                       </li>
+                   </ul>
+
+                   <!-- CTA Button -->
+                   <a href="https://t.me/NarmoonAI_BOT" class="btn btn-primary cta-btn" target="_blank">
+                       <i class="fab fa-telegram me-2"></i>شروع با ربات تلگرامی
+                   </a>
+               </div>
+           </div>
+       </nav>
+   </header>
 
     <!-- Main Content -->
     <main>

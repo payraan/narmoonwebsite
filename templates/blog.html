@@ -1,0 +1,493 @@
+{% extends "base.html" %}
+
+{% block title %}وبلاگ نارموون - مقالات تخصصی تحلیل بازارهای مالی{% endblock %}
+
+{% block meta %}
+<meta name="description" content="وبلاگ نارموون: آخرین مقالات تخصصی درباره تحلیل بازارهای مالی، ارزهای دیجیتال، هوش مصنوعی در تریدینگ و آموزش‌های حرفه‌ای.">
+<meta name="keywords" content="وبلاگ نارموون، مقالات تحلیل مالی، آموزش تریدینگ، ارز دیجیتال، هوش مصنوعی، تحلیل تکنیکال">
+<meta property="og:title" content="وبلاگ نارموون - مقالات تخصصی تحلیل بازارهای مالی">
+<meta property="og:description" content="آخرین مقالات و آموزش‌های تخصصی درباره تحلیل بازارهای مالی و ارزهای دیجیتال">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://narmoon.io/blog">
+{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="page-header py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">خانه</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">وبلاگ</li>
+                    </ol>
+                </nav>
+                <h1 class="display-4 fw-bold text-dark mb-3">وبلاگ نارموون</h1>
+                <p class="lead text-muted">آخرین مقالات و تحلیل‌های تخصصی درباره بازارهای مالی، ارزهای دیجیتال و هوش مصنوعی</p>
+            </div>
+            <div class="col-lg-4">
+                <div class="text-center">
+                    <img src="/static/images/blog-hero.webp" alt="وبلاگ نارموون" class="img-fluid rounded-3 shadow-lg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Featured Article -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">مقاله ویژه</h2>
+            <p class="section-subtitle">آخرین و مهم‌ترین مطالب هفته</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="featured-article bg-primary-50 rounded-3 p-5">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8">
+                            <div class="article-meta mb-3">
+                                <span class="badge bg-primary">ویژه</span>
+                                <span class="text-muted">۱۵ دی ۱۴۰۳</span>
+                                <span class="text-muted">۱۲ دقیقه مطالعه</span>
+                            </div>
+                            <h3 class="article-title">
+                                <a href="/blog/future-of-ai-in-iranian-financial-markets">آینده هوش مصنوعی در بازارهای مالی ایران</a>
+                            </h3>
+                            <p class="article-summary">
+                                نگاهی جامع به تأثیر هوش مصنوعی بر بازارهای مالی ایران، چالش‌ها و فرصت‌های پیش رو، و نقش ربات‌های تحلیل‌گر در آینده تریدینگ کشور.
+                            </p>
+                            <div class="article-tags">
+                                <span class="tag">هوش مصنوعی</span>
+                                <span class="tag">بازار ایران</span>
+                                <span class="tag">آینده پژوهی</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <img src="/static/images/blog-featured.webp" alt="آینده هوش مصنوعی" class="img-fluid rounded-3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Categories -->
+<section class="py-5 bg-gray-50">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">دسته‌بندی مقالات</h2>
+            <p class="section-subtitle">مطالب را بر اساس علاقه‌مندی خود انتخاب کنید</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="category-card text-center p-4 bg-white rounded-3 shadow h-100">
+                    <div class="category-icon mb-3">
+                        <i class="fas fa-graduation-cap fa-3x text-info"></i>
+                    </div>
+                    <h5>آموزش تریدینگ</h5>
+                    <p class="text-muted">راهنماهای عملی و آموزشی</p>
+                    <span class="badge bg-info-soft">۲۰ مقاله</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Articles -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">آخرین مقالات</h2>
+            <p class="section-subtitle">جدیدترین مطالب منتشر شده</p>
+        </div>
+
+        <div class="article-grid">
+            <!-- Article 1 -->
+            <div class="article-card">
+                <div class="article-meta">
+                    <span class="text-primary">۱۲ دی ۱۴۰۳</span>
+                    <span class="text-muted">۸ دقیقه مطالعه</span>
+                </div>
+                <h4 class="article-title">
+                    <a href="/blog/10-common-crypto-trading-mistakes">۱۰ اشتباه رایج در تریدینگ ارز دیجیتال</a>
+                </h4>
+                <p class="article-summary">
+                    بررسی شایع‌ترین اشتباهاتی که تریدرهای مبتدی و حرفه‌ای در بازار ارزهای دیجیتال مرتکب می‌شوند و راه‌های جلوگیری از آنها.
+                </p>
+                <div class="article-tags">
+                    <span class="tag">تریدینگ</span>
+                    <span class="tag">اشتباهات رایج</span>
+                    <span class="tag">آموزش</span>
+                </div>
+            </div>
+
+            <!-- Article 2 -->
+            <div class="article-card">
+                <div class="article-meta">
+                    <span class="text-primary">۹ دی ۱۴۰۳</span>
+                    <span class="text-muted">۱۵ دقیقه مطالعه</span>
+                </div>
+                <h4 class="article-title">
+                    <a href="/blog/technical-analysis-with-ai">تحلیل تکنیکال با کمک هوش مصنوعی</a>
+                </h4>
+                <p class="article-summary">
+                    چگونه هوش مصنوعی می‌تواند دقت تحلیل‌های تکنیکال را افزایش دهد و الگوهای پنهان بازار را شناسایی کند.
+                </p>
+                <div class="article-tags">
+                    <span class="tag">تحلیل تکنیکال</span>
+                    <span class="tag">هوش مصنوعی</span>
+                    <span class="tag">ML</span>
+                </div>
+            </div>
+
+            <!-- Article 3 -->
+            <div class="article-card">
+                <div class="article-meta">
+                    <span class="text-primary">۶ دی ۱۴۰۳</span>
+                    <span class="text-muted">۱۰ دقیقه مطالعه</span>
+                </div>
+                <h4 class="article-title">
+                    <a href="/blog/bitcoin-price-prediction-2025">پیش‌بینی قیمت بیت کوین در سال ۲۰۲۵</a>
+                </h4>
+                <p class="article-summary">
+                    تحلیل جامع عوامل مؤثر بر قیمت بیت کوین و پیش‌بینی‌های کارشناسان برای سال آینده بر اساس داده‌های موجود.
+                </p>
+                <div class="article-tags">
+                    <span class="tag">بیت کوین</span>
+                    <span class="tag">پیش‌بینی</span>
+                    <span class="tag">۲۰۲۵</span>
+                </div>
+            </div>
+
+            <!-- Article 4 -->
+            <div class="article-card">
+                <div class="article-meta">
+                    <span class="text-primary">۳ دی ۱۴۰۳</span>
+                    <span class="text-muted">۱۲ دقیقه مطالعه</span>
+                </div>
+                <h4 class="article-title">
+                    <a href="/blog/risk-management-in-crypto">مدیریت ریسک در سرمایه‌گذاری کریپتو</a>
+                </h4>
+                <p class="article-summary">
+                    اصول و استراتژی‌های مدیریت ریسک در بازار ارزهای دیجیتال، از stop-loss تا portfolio diversification.
+                </p>
+                <div class="article-tags">
+                    <span class="tag">مدیریت ریسک</span>
+                    <span class="tag">کریپتو</span>
+                    <span class="tag">استراتژی</span>
+                </div>
+            </div>
+
+            <!-- Article 5 -->
+            <div class="article-card">
+                <div class="article-meta">
+                    <span class="text-primary">۲۹ آذر ۱۴۰۳</span>
+                    <span class="text-muted">۹ دقیقه مطالعه</span>
+                </div>
+                <h4 class="article-title">
+                    <a href="/blog/defi-trends-2025">روندهای DeFi در سال ۲۰۲۵</a>
+                </h4>
+                <p class="article-summary">
+                    بررسی آخرین تحولات در حوزه امور مالی غیرمتمرکز و پیش‌بینی روندهای آینده این بخش مهم از اکوسیستم کریپتو.
+                </p>
+                <div class="article-tags">
+                    <span class="tag">DeFi</span>
+                    <span class="tag">روندها</span>
+                    <span class="tag">آینده</span>
+                </div>
+            </div>
+
+            <!-- Article 6 -->
+            <div class="article-card">
+                <div class="article-meta">
+                    <span class="text-primary">۲۶ آذر ۱۴۰۳</span>
+                    <span class="text-muted">۱۴ دقیقه مطالعه</span>
+                </div>
+                <h4 class="article-title">
+                    <a href="/blog/narmoon-vs-competitors">مقایسه نارموون با سایر ربات‌های تحلیل‌گر</a>
+                </h4>
+                <p class="article-summary">
+                    مقایسه جامع ویژگی‌ها، دقت تحلیل و قیمت نارموون با معروف‌ترین ربات‌های تحلیل‌گر موجود در بازار.
+                </p>
+                <div class="article-tags">
+                    <span class="tag">نارموون</span>
+                    <span class="tag">مقایسه</span>
+                    <span class="tag">ربات تحلیل</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mt-5">
+            <button class="btn btn-outline-primary btn-lg" id="loadMoreBtn">
+                <i class="fas fa-plus me-2"></i>
+                مشاهده مقالات بیشتر
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="py-5 bg-primary-50">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h3 class="mb-4">در جریان آخرین مطالب باشید</h3>
+                <p class="text-muted mb-4">
+                    با عضویت در خبرنامه نارموون، آخرین مقالات و تحلیل‌های بازار را مستقیماً در ایمیل خود دریافت کنید.
+                </p>
+                <form class="newsletter-form d-flex gap-2 justify-content-center" id="newsletterForm">
+                    <input type="email" class="form-control" placeholder="ایمیل خود را وارد کنید" required style="max-width: 300px;">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane me-2"></i>
+                        عضویت
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Popular Tags -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h3>برچسب‌های محبوب</h3>
+            <p class="text-muted">مطالب را بر اساس موضوعات مورد علاقه پیدا کنید</p>
+        </div>
+
+        <div class="d-flex justify-content-center flex-wrap gap-2">
+            <a href="/blog/tag/bitcoin" class="tag-link">بیت کوین</a>
+            <a href="/blog/tag/ethereum" class="tag-link">اتریوم</a>
+            <a href="/blog/tag/ai" class="tag-link">هوش مصنوعی</a>
+            <a href="/blog/tag/technical-analysis" class="tag-link">تحلیل تکنیکال</a>
+            <a href="/blog/tag/trading" class="tag-link">تریدینگ</a>
+            <a href="/blog/tag/defi" class="tag-link">DeFi</a>
+            <a href="/blog/tag/nft" class="tag-link">NFT</a>
+            <a href="/blog/tag/blockchain" class="tag-link">بلاکچین</a>
+            <a href="/blog/tag/altcoins" class="tag-link">آلت کوین</a>
+            <a href="/blog/tag/market-analysis" class="tag-link">تحلیل بازار</a>
+            <a href="/blog/tag/risk-management" class="tag-link">مدیریت ریسک</a>
+            <a href="/blog/tag/portfolio" class="tag-link">پورتفولیو</a>
+        </div>
+    </div>
+</section>
+
+<!-- Archive Section -->
+<section class="py-5 bg-gray-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h3 class="text-center mb-5">آرشیو مقالات</h3>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="archive-card p-4 bg-white rounded-3 shadow-sm">
+                            <h5 class="text-primary">دی ۱۴۰۳</h5>
+                            <p class="text-muted mb-2">۸ مقاله</p>
+                            <a href="/blog/archive/2024/12" class="stretched-link">مشاهده همه</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="archive-card p-4 bg-white rounded-3 shadow-sm">
+                            <h5 class="text-primary">آذر ۱۴۰۳</h5>
+                            <p class="text-muted mb-2">۱۲ مقاله</p>
+                            <a href="/blog/archive/2024/11" class="stretched-link">مشاهده همه</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="archive-card p-4 bg-white rounded-3 shadow-sm">
+                            <h5 class="text-primary">آبان ۱۴۰۳</h5>
+                            <p class="text-muted mb-2">۱۰ مقاله</p>
+                            <a href="/blog/archive/2024/10" class="stretched-link">مشاهده همه</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="archive-card p-4 bg-white rounded-3 shadow-sm">
+                            <h5 class="text-primary">مهر ۱۴۰۳</h5>
+                            <p class="text-muted mb-2">۹ مقاله</p>
+                            <a href="/blog/archive/2024/09" class="stretched-link">مشاهده همه</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Newsletter form submission
+    const newsletterForm = document.getElementById('newsletterForm');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            
+            // Add newsletter subscription logic here
+            showNotification('شما با موفقیت در خبرنامه عضو شدید!', 'success');
+            this.reset();
+        });
+    }
+
+    // Load more articles
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function() {
+            // Add load more functionality here
+            this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>در حال بارگذاری...';
+            
+            setTimeout(() => {
+                showNotification('مقالات جدید بارگذاری شد!', 'success');
+                this.innerHTML = '<i class="fas fa-plus me-2"></i>مشاهده مقالات بیشتر';
+            }, 2000);
+        });
+    }
+
+    // Tag links hover effect
+    const tagLinks = document.querySelectorAll('.tag-link');
+    tagLinks.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+});
+
+// Additional CSS for blog page
+const blogStyle = document.createElement('style');
+blogStyle.textContent = `
+    .featured-article {
+        border: 2px solid var(--primary-200);
+        transition: all 0.3s ease;
+    }
+    
+    .featured-article:hover {
+        border-color: var(--primary-400);
+        transform: translateY(-5px);
+    }
+    
+    .category-card {
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+    }
+    
+    .category-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary-200);
+        box-shadow: var(--shadow-teal);
+    }
+    
+    .category-icon i {
+        transition: all 0.3s ease;
+    }
+    
+    .category-card:hover .category-icon i {
+        transform: scale(1.1);
+    }
+    
+    .tag-link {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background: var(--primary-50);
+        color: var(--primary-700);
+        text-decoration: none;
+        border-radius: var(--radius-full);
+        font-weight: var(--font-medium);
+        transition: all 0.3s ease;
+        border: 1px solid var(--primary-200);
+    }
+    
+    .tag-link:hover {
+        background: var(--primary-600);
+        color: white;
+        text-decoration: none;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
+    
+    .archive-card {
+        position: relative;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+    }
+    
+    .archive-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--primary-200);
+        box-shadow: var(--shadow-md);
+    }
+    
+    .newsletter-form {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .newsletter-form input:focus {
+        border-color: var(--primary-500);
+        box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+    }
+    
+    .badge.bg-primary-soft {
+        background-color: var(--primary-100) !important;
+        color: var(--primary-700) !important;
+    }
+    
+    .badge.bg-warning-soft {
+        background-color: var(--warning-50) !important;
+        color: var(--warning-600) !important;
+    }
+    
+    .badge.bg-success-soft {
+        background-color: var(--success-50) !important;
+        color: var(--success-600) !important;
+    }
+    
+    .badge.bg-info-soft {
+        background-color: #e0f2fe !important;
+        color: #0277bd !important;
+    }
+`;
+
+document.head.appendChild(blogStyle);
+</script>
+{% endblock %}d text-center p-4 bg-white rounded-3 shadow h-100">
+                    <div class="category-icon mb-3">
+                        <i class="fas fa-chart-line fa-3x text-primary"></i>
+                    </div>
+                    <h5>تحلیل بازار</h5>
+                    <p class="text-muted">تحلیل‌های فنی و بنیادی بازارهای مالی</p>
+                    <span class="badge bg-primary-soft">۱۵ مقاله</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="category-card text-center p-4 bg-white rounded-3 shadow h-100">
+                    <div class="category-icon mb-3">
+                        <i class="fab fa-bitcoin fa-3x text-warning"></i>
+                    </div>
+                    <h5>ارزهای دیجیتال</h5>
+                    <p class="text-muted">آخرین اخبار و تحلیل‌های کریپتو</p>
+                    <span class="badge bg-warning-soft">۲۳ مقاله</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="category-card text-center p-4 bg-white rounded-3 shadow h-100">
+                    <div class="category-icon mb-3">
+                        <i class="fas fa-robot fa-3x text-success"></i>
+                    </div>
+                    <h5>هوش مصنوعی</h5>
+                    <p class="text-muted">کاربرد AI در تحلیل مالی</p>
+                    <span class="badge bg-success-soft">۱۸ مقاله</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="category-car

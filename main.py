@@ -395,10 +395,6 @@ async def server_error_handler(request: Request, exc: Exception):
 async def redirect_home():
     return RedirectResponse(url="/", status_code=301)
 
-@app.get("/blog")
-async def redirect_blog():
-    return RedirectResponse(url="/articles", status_code=301)
-
 # Analytics endpoint (for internal use)
 @app.post("/api/analytics")
 async def track_analytics(request: Request):
@@ -424,3 +420,44 @@ if __name__ == "__main__":
         access_log=True,
         forwarded_allow_ips="*",
     )
+
+@app.get("/about", response_class=HTMLResponse)
+async def about(request: Request):
+    """صفحه درباره نارموون"""
+    return templates.TemplateResponse("about.html", {"request": request})
+
+@app.get("/blog", response_class=HTMLResponse)
+async def blog(request: Request):
+    """صفحه اصلی وبلاگ"""
+    return templates.TemplateResponse("blog.html", {"request": request})
+
+@app.get("/blog/{slug}", response_class=HTMLResponse)
+async def blog_post(request: Request, slug: str):
+    """صفحه مقاله منفرد - آماده برای آینده"""
+    # فعلاً redirect به صفحه اصلی blog
+    return RedirectResponse(url="/blog", status_code=302)
+
+@app.get("/blog/tag/{tag}", response_class=HTMLResponse)
+async def blog_tag(request: Request, tag: str):
+    """صفحه برچسب مقالات - آماده برای آینده"""
+    # فعلاً redirect به صفحه اصلی blog  
+    return RedirectResponse(url="/blog", status_code=302)
+
+@app.get("/blog/archive/{year}/{month}", response_class=HTMLResponse)
+async def blog_archive(request: Request, year: int, month: int):
+    """صفحه آرشیو مقالات - آماده برای آینده"""
+    # فعلاً redirect به صفحه اصلی blog
+    return RedirectResponse(url="/blog", status_code=302)
+
+@app.post("/newsletter")
+async def newsletter_subscribe(request: Request):
+    """عضویت در خبرنامه"""
+    form = await request.form()
+    email = form.get("email")
+    
+    if email:
+        # اینجا می‌تونی email رو در database ذخیره کنی
+        # فعلاً فقط success response برمی‌گردونیم
+        return {"status": "success", "message": "عضویت با موفقیت انجام شد"}
+    else:
+        return {"status": "error", "message": "ایمیل معتبر وارد کنید"}
