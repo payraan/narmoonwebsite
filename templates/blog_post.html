@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    
+    <!-- Bootstrap 5 RTL -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.min.css?v=2025-optimized">
+    
+    <!-- SEO -->
+    <meta name="description" content="{{ post.excerpt }}">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/logo.png" alt="نارمون" height="50">
+                    <span class="brand-text me-2">نارمون</span>
+                </a>
+                <div class="navbar-nav me-auto">
+                    <a class="nav-link" href="/">خانه</a>
+                    <a class="nav-link" href="/about">درباره نارمون</a>
+                    <a class="nav-link active" href="/blog">وبلاگ</a>
+                    <a class="nav-link" href="/videos">ویدیوها</a>
+                    <a class="nav-link" href="/articles">مقالات</a>
+                </div>
+                <a href="https://t.me/NarmoonAI_BOT" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-telegram me-2"></i>شروع با ربات
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <!-- Breadcrumb -->
+                    <nav aria-label="breadcrumb" class="mb-4">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">خانه</a></li>
+                            <li class="breadcrumb-item"><a href="/blog">وبلاگ</a></li>
+                            <li class="breadcrumb-item active">{{ post.title }}</li>
+                        </ol>
+                    </nav>
+
+                    <!-- Article Header -->
+                    <article class="blog-article">
+                        <header class="mb-4">
+                            <h1 class="display-5 mb-3">{{ post.title }}</h1>
+                            
+                            <!-- Meta Info -->
+                            <div class="d-flex align-items-center text-muted mb-3">
+                                <i class="fas fa-calendar me-2"></i>
+                                <span class="me-3">{{ post.created_at.strftime('%Y/%m/%d') }}</span>
+                                <i class="fas fa-clock me-2"></i>
+                                <span>{{ (post.content.split()|length / 200)|round|int }} دقیقه مطالعه</span>
+                            </div>
+
+                            <!-- Tags -->
+                            {% if tags %}
+                            <div class="mb-4">
+                                {% for tag in tags %}
+                                <span class="badge bg-primary me-2 mb-2">{{ tag }}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+
+                            <!-- Excerpt -->
+                            {% if post.excerpt %}
+                            <div class="alert alert-info">
+                                <strong>خلاصه:</strong> {{ post.excerpt }}
+                            </div>
+                            {% endif %}
+                        </header>
+
+                        <!-- Article Content -->
+                        <div class="article-content">
+                            {{ post.content|replace('\n\n', '</p><p>')|replace('\n', '<br>')|safe }}
+                        </div>
+
+                        <!-- Article Footer -->
+                        <footer class="mt-5 pt-4 border-top">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>اشتراک‌گذاری:</h6>
+                                    <div class="social-share">
+                                        <a href="https://t.me/share/url?url={{ request.url }}&text={{ post.title }}" 
+                                           class="btn btn-outline-primary btn-sm me-2" target="_blank">
+                                            <i class="fab fa-telegram me-1"></i>تلگرام
+                                        </a>
+                                        <a href="https://twitter.com/intent/tweet?text={{ post.title }}&url={{ request.url }}" 
+                                           class="btn btn-outline-info btn-sm" target="_blank">
+                                            <i class="fab fa-twitter me-1"></i>توییتر
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 text-md-end">
+                                    <a href="/blog" class="btn btn-secondary">
+                                        <i class="fas fa-arrow-right me-2"></i>بازگشت به وبلاگ
+                                    </a>
+                                </div>
+                            </div>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light py-4">
+        <div class="container text-center">
+            <p>&copy; ۱۴۰۳ نارمون. تمامی حقوق محفوظ است.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

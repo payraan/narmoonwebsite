@@ -162,21 +162,11 @@ SAMPLE_VIDEOS = [
         "id": 1,
         "title": "آموزش کامل استفاده از ربات نارموون",
         "description": "در این ویدیو نحوه استفاده از تمام امکانات ربات نارموون را یاد می‌گیرید",
-        "youtube_id": "dQw4w9WgXcQ",
-        "duration": "15:30",
+        "youtube_id": "WjQzb7rBboM",
+        "duration": "15:30",   
         "category": "آموزش ربات",
         "views": "۱,۲۳۴",
         "published_date": datetime(2025, 1, 10)
-    },
-    {
-        "id": 2,
-        "title": "تحلیل تصویری چارت با هوش مصنوعی",
-        "description": "روش ارسال تصاویر چارت و دریافت تحلیل دقیق",
-        "youtube_id": "dQw4w9WgXcQ",
-        "duration": "12:45",
-        "category": "تحلیل تکنیکال",
-        "views": "۹۸۷",
-        "published_date": datetime(2025, 1, 12)
     }
 ]
 
@@ -428,8 +418,43 @@ async def about(request: Request):
 
 @app.get("/blog", response_class=HTMLResponse)
 async def blog(request: Request):
-    """صفحه اصلی وبلاگ"""
-    return templates.TemplateResponse("blog.html", {"request": request})
+    import sys
+    sys.path.append("./blog_system")
+    try:
+        from blog_helpers import get_all_posts
+        posts = get_all_posts()
+        
+        html = f"""<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>وبلاگ نارمون</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.min.css">
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="text-center mb-5">🎯 وبلاگ نارمون</h1>
+        <div class="alert alert-success text-center mb-4">
+            <strong>{len(posts)} مقاله منتشر شده</strong>
+        </div>
+        <div class="row">"""  
+        
+        for post in posts:
+            html += f"""<div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{post.title}</h5>
+                        <p class="text-muted">{post.excerpt[:100] if post.excerpt else ""}...</p>
+                        <small class="text-muted">{post.created_at.strftime("%Y/%m/%d")}</small>
+                    </div>
+                </div>
+            </div>"""
+        
+        html += """</div></div></body></html>"""
+        return HTMLResponse(html)
+    except Exception as e:
+        return HTMLResponse(f"<h1>خطا: {str(e)}</h1>")
 
 @app.get("/blog/{slug}", response_class=HTMLResponse)
 async def blog_post(request: Request, slug: str):
@@ -461,3 +486,94 @@ async def newsletter_subscribe(request: Request):
         return {"status": "success", "message": "عضویت با موفقیت انجام شد"}
     else:
         return {"status": "error", "message": "ایمیل معتبر وارد کنید"}
+
+# === BLOG API ===
+@app.get('/api/blog')
+async def blog_api():
+    import sys
+    sys.path.append('./blog_system')
+    try:
+        from blog_helpers import get_all_posts
+        posts = get_all_posts()
+        return {
+            'success': True,
+            'count': len(posts),
+            'posts': [
+                {
+                    'title': post.title,
+                    'excerpt': post.excerpt,
+                    'created_at': post.created_at.strftime('%Y/%m/%d'),
+                    'word_count': len(post.content.split())
+                }
+                for post in posts
+            ]
+        }
+    except Exception as e:
+        return {'success': False, 'error': str(e)}
+
+
+@app.get("/blog-real", response_class=HTMLResponse)
+async def blog_real():
+    import sys
+    sys.path.append('./blog_system')
+    try:
+        from blog_helpers import get_all_posts
+        posts = get_all_posts()
+        
+        html = f'''
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>وبلاگ نارمون</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/images/logo.png" alt="نارمون" height="50">
+            </a>
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">خانه</a>
+                <a class="nav-link active" href="/blog-real">وبلاگ</a>
+                <a class="nav-link" href="/about">درباره ما</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container py-5">
+        <h1 class="text-center mb-5">🎯 وبلاگ نارمون</h1>
+        <div class="alert alert-success text-center">
+            <strong>{len(posts)} مقاله</strong> منتشر شده
+        </div>
+        
+        <div class="row">'''
+        
+        for post in posts:
+            html += f'''
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{post.title}</h5>
+                        <p class="card-text text-muted">{post.excerpt[:100] if post.excerpt else ""}...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">{post.created_at.strftime('%Y/%m/%d')}</small>
+                            <span class="badge bg-primary">{len(post.content.split())} کلمه</span>
+                        </div>
+                    </div>
+                </div>
+            </div>'''
+        
+        html += '''
+        </div>
+        <div class="text-center mt-5">
+            <a href="/api/blog" class="btn btn-outline-primary">مشاهده API</a>
+        </div>
+    </div>
+</body>
+</html>'''
+        return HTMLResponse(html)
+    except Exception as e:
+        return HTMLResponse(f'<h1>خطا: {str(e)}</h1><p><a href="/">بازگشت به خانه</a></p>')
